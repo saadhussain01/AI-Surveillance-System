@@ -3,8 +3,12 @@ from ultralytics import YOLO
 
 class Detector:
     def __init__(self):
-        self.model = YOLO("yolov8n.pt")
+        self.model = YOLO("yolov8l.pt")
 
     def detect(self, frame):
-        results = self.model.track(frame, persist=True, classes=[0])  # only person
+        results = self.model.track(
+        frame,
+        persist=True,
+        conf=0.5
+    )
         return results
